@@ -5,10 +5,10 @@ ssh = paramiko.SSHClient()
 
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 command=input("Enter a command to run on the remote server(s): ")
-user_input=input("Enter the path of your file: ")
-if os.path.exists(user_input):
+servers=input("Enter the path of your file: ")
+if os.path.exists(servers):
 
- with open(user_input, 'r') as fp:
+ with open(servers, 'r') as fp:
     for ip in [line.strip() for line in fp.readlines()]:
         ssh.connect(ip, 22, "root", "Stefan9010")
         stdin, stdout, stderr = ssh.exec_command(command)
